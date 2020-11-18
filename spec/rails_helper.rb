@@ -19,6 +19,7 @@ require 'factory_bot_rails'
 require 'shoulda/matchers'
 require 'devise/test_helpers'
 require 'rspec/active_model/mocks'
+require 'sidekiq/testing'
 
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?

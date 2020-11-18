@@ -3,7 +3,7 @@ class CreateReminders < ActiveRecord::Migration[6.0]
     create_table :reminders do |t|
       t.string :title
       t.string :comment
-      t.datetime :schedule_date
+      t.datetime :due_date
       t.integer  :user_id
 
       t.timestamps

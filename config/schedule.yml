@@ -1,0 +1,5 @@
+send_schedule_sms_worker:
+  cron: "0 * * * *"
+  class: "ShortMessageWorker"
+  queue: "default"
+  description: "Send schedule SMS"

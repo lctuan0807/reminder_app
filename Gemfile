@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -38,10 +38,18 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'twilio-ruby', '~> 5.42.0'
 
+# Background Jobs
+gem 'redis-store'
+gem 'redis-rails'
+gem 'sidekiq', '~> 5.0' # requires redis > 4
+gem "sidekiq-cron", "~> 1.1"
+gem 'haml'
+
 group :test do
   gem 'rspec-activemodel-mocks'
   gem 'factory_bot_rails'
   gem 'shoulda'
+  gem 'faker'
 end
 
 group :development, :test do
