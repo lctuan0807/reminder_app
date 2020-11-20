@@ -1,0 +1,12 @@
+= form_for :reminder, url: reminder_path(@reminder), method: :put, local: true do |form|
+  %p 
+    Title
+    = form.text_field :title
+  %p
+    Due After
+    = form.number_field :due_after
+ 
+  %p
+    = form.submit
+ 
+= link_to 'Back', reminders_path

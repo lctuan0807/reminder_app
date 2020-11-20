@@ -7,14 +7,13 @@ Rails.application.routes.draw do
   }
 
   mount Sidekiq::Web => '/sidekiq'
+  root 'reminders#index'
 
   devise_scope :user do
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
-    end
+    root 'devise/sessions#new', as: :unauthenticated_root
   end
 
-  resources :reminder
+  resources :reminders, except: [:create, :new, :show, :destroy]
   resources :short_messages
-  resources :short_message_templates
+  resources :short_message_templates, except: [:create, :new, :show, :destroy]
 end

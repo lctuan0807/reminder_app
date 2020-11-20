@@ -1,0 +1,16 @@
+%h1 SMS Templates
+      
+%table
+  %tr
+    %th{width: '300px'} Name
+    %th{width: '500px'} Content
+    %th{width: '100px'} Status
+    %th Actions
+ 
+  - @short_message_templates.each do |short_message_template|
+    %tr
+      %td{width: '300px'}= short_message_template.name
+      %td{width: '500px'}= short_message_template.content
+      %td{width: '100px'}= boolean_humanize(short_message_template.enabled)
+      %td= link_to 'Show', short_message_template_path(short_message_template) 
+      %td= link_to 'Edit', edit_short_message_template_path(short_message_template) 

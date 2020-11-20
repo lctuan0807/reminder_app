@@ -5,31 +5,34 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reminders
-  has_many :short_messagess
+  has_many :short_messages
   validates :email, :phone, presence: true
 
-  after_save :create_reminder
-  after_commit :create_short_messages, on: [:create]
+  after_create :after_sign_up
 
   private
 
-  def user
-    User.find(id)
+  def after_sign_up
+    send_welcome_sms
+    create_schedule_sms
   end
 
-  def create_reminder
-    @reminder ||= ReminderCreator.new(user: user, params: reminder_params).perform
+  def send_welcome_sms
+    ShortMessage::WelcomeSmsSender.new(user_id: id).perform
   end
 
-  def reminder_params
+  def create_schedule_sms
+    ShortMessage::ScheduleSmsCreator.new(params: schedule_sms_params).perform
+  end
+
+  def schedule_sms_params
     {
-      title: 'Notify SMS after 7 days registration',
-      due_date: user.created_at + 7.days
+      user_id: id,
+      reminder_id: reminder.id
     }
   end
 
-  def create_short_messages
-    ShortMessage::SmsCreator.new(user: user, schedule: false).perform
-    ShortMessage::SmsCreator.new(user: user, reminder: @reminder, schedule: true).perform
+  def reminder
+    @reminder ||= Reminder.find_by(title: 'Notify SMS after 7 days registration')
   end
 end

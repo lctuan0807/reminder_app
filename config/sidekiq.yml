@@ -1,4 +1,4 @@
-# :pidfile: tmp/pids/sidekiq.pid
-# development:
-#   :verbose: true
-  # :logfile: log/sidekiq.log
+:pidfile: tmp/pids/sidekiq.pid
+development:
+  :verbose: true
+  :logfile: log/sidekiq.log

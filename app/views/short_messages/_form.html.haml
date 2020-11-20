@@ -1,0 +1,13 @@
+= form_for :short_message, url: url, method: method, local: true do |form|
+  %p 
+    Phone Number
+    = form.text_field :phone_number
+ 
+  %p
+    Content
+    = form.text_area :content
+ 
+  %p
+    = form.submit
+ 
+= link_to 'Back', short_messages_path

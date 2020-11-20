@@ -1,4 +1,3 @@
 class Reminder < ApplicationRecord
-  belongs_to :user
-  has_many :short_message
+  belongs_to :sms_template, class_name: 'ShortMessageTemplate', foreign_key: 'sms_template_id'
 end

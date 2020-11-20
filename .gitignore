@@ -25,3 +25,4 @@ Procfile.dev
 .byebug_history
 .rvmrc
 .DS_Store
+/dump.rdb

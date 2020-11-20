@@ -3,7 +3,7 @@ class CreateShortMessageTemplates < ActiveRecord::Migration[6.0]
     create_table :short_message_templates do |t|
       t.string :name
       t.string :content
-      t.boolean :enabled
+      t.boolean :enabled, default: true
 
       t.timestamps
     end

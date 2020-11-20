@@ -1,0 +1,17 @@
+= form_for :short_message_template, url: short_message_template_path(@short_message_template), method: :put, local: true do |form|
+  %p 
+    = form.label :name
+    = form.text_field :name
+ 
+  %p
+    = form.label :content
+    = form.text_area :content
+
+  %p
+    Enabled?
+    = form.check_box :enabled
+ 
+  %p
+    = form.submit
+ 
+= link_to 'Back', short_message_templates_path

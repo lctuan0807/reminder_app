@@ -42,7 +42,7 @@ gem 'twilio-ruby', '~> 5.42.0'
 gem 'redis-store'
 gem 'redis-rails'
 gem 'sidekiq', '~> 5.0' # requires redis > 4
-gem "sidekiq-cron", "~> 1.1"
+gem 'sidekiq-cron'
 gem 'haml'
 
 group :test do
@@ -50,6 +50,7 @@ group :test do
   gem 'factory_bot_rails'
   gem 'shoulda'
   gem 'faker'
+  gem 'simplecov'
 end
 
 group :development, :test do

@@ -1,3 +1,5 @@
 class ShortMessageTemplate < ApplicationRecord
-  has_many :short_messages
+  validates :name, presence: true
+
+  scope :enabled, -> { where(enabled: true) }
 end

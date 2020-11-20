@@ -1,0 +1,21 @@
+%h1 Short Messages
+
+%td= link_to 'New SMS', new_short_message_path
+
+%table
+  %tr
+    %th Phone Number
+    %th{width: '500px'} Content
+    %th{width: '100px'} Status
+    %th{width: '200px'} Expected Send Date
+    %th Actions
+ 
+  - @short_messages.each do |short_message|
+    %tr
+      %td= short_message.phone_number
+      %td{width: '500px'}= short_message.content
+      %td{width: '100px', style: 'text-align: center'}= short_message.status.humanize
+      %td{width: '200px'}= date_parse_strftime(short_message.expected_send_date)
+      %td= link_to 'Show SMS', short_message_path(short_message) 
+      - if short_message.unsent?
+        %td= link_to 'Edit SMS', edit_short_message_path(short_message)

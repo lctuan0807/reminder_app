@@ -2,9 +2,8 @@ class CreateReminders < ActiveRecord::Migration[6.0]
   def change
     create_table :reminders do |t|
       t.string :title
-      t.string :comment
-      t.datetime :due_date
-      t.integer  :user_id
+      t.integer :due_after, null: false
+      t.integer :sms_template_id
 
       t.timestamps
     end

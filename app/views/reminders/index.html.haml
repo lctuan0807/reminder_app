@@ -1,0 +1,13 @@
+%h1 Reminders
+
+%table
+  %tr
+    %th Title
+    %th Due After
+    %th Actions
+ 
+  - @reminders.each do |reminder|
+    %tr
+      %td= reminder.title
+      %td= reminder.due_after
+      %td= link_to 'Edit', edit_reminder_path(reminder) 

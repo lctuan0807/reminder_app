@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_060824) do
+ActiveRecord::Schema.define(version: 2020_11_18_060348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "reminders", force: :cascade do |t|
     t.string "title"
-    t.string "comment"
-    t.datetime "due_date"
-    t.integer "user_id"
+    t.integer "due_after", null: false
+    t.integer "sms_template_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -27,22 +26,21 @@ ActiveRecord::Schema.define(version: 2020_11_18_060824) do
   create_table "short_message_templates", force: :cascade do |t|
     t.string "name"
     t.string "content"
-    t.boolean "enabled"
+    t.boolean "enabled", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "short_messages", force: :cascade do |t|
     t.string "content"
-    t.string "phone_number"
-    t.integer "status", default: 0
+    t.string "phone_number", null: false
+    t.integer "status", default: 0, null: false
     t.integer "kind", default: 0
     t.datetime "expected_send_date"
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.integer "reminder_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "short_messages_template_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

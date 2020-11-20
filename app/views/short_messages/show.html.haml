@@ -1,0 +1,18 @@
+%h3 Short Message Details
+
+%p
+  %strong Phone Number:
+  = @short_message.phone_number
+ 
+%p
+  %strong Message Content:
+  = @short_message.content
+
+%p
+  %strong Status:
+  = @short_message.status.humanize
+
+- if @short_message.expected_send_date.present?
+  %p
+    %strong Expected Send Date:
+    = date_parse_strftime(@short_message.expected_send_date)

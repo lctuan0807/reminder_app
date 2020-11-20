@@ -1,24 +1,32 @@
-# README
+# Reminder Send SMS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project will notify message to user after registration and setup reminder to send 2nd SMS to user after 7 days from registration date.
 
-Things you may want to cover:
+## Prerequisite
 
-* Ruby version
+You should have an [Twilio](https://www.twilio.com) account (API to send SMS in this project). We need `account_sid`, `auth_token`, `phone_number` to setup.
 
-* System dependencies
+## Setup
 
-* Configuration
+bundle install
 
-* Database creation
+bin/rails db:setup
 
-* Database initialization
+### Setup Twilio API by use rails credentials 
 
-* How to run the test suite
+`EDITOR=vim rails credentials:edit`
 
-* Services (job queues, cache servers, search engines, etc.)
+Then config like this
 
-* Deployment instructions
+```
+twilio:
+  account_sid: your_account_sid
+  auth_token: your_auth_token
+  phone_number: your_phone_number
+```
 
-* ...
+## Testing
+
+bundle exec rspec spec
+
+
