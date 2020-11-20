@@ -8,7 +8,7 @@ FactoryBot.define do
       user.class.any_instance.stub(:after_sign_up)
     end
 
-    trait :user_with_callback do
+    factory :user_with_callback do
       after(:create) do |user| 
         user.class.any_instance.unstub(:after_sign_up)
       end

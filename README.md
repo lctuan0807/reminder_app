@@ -12,6 +12,14 @@ bundle install
 
 bin/rails db:setup
 
+### Start Redis server 
+
+`redis-server`
+
+### Start Sidekiq
+
+`bundle exec sidekiq`
+
 ### Setup Twilio API by use rails credentials 
 
 `EDITOR=vim rails credentials:edit`

@@ -9,8 +9,15 @@ class User < ApplicationRecord
   validates :email, :phone, presence: true
 
   after_create :after_sign_up
+  before_create :format_phone_number
 
   private
+
+  def format_phone_number
+    self.phone.slice! '0'
+    self.phone = "+84#{self.phone}"
+    self.phone
+  end
 
   def after_sign_up
     send_welcome_sms
