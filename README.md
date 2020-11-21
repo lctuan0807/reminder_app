@@ -8,9 +8,9 @@ You should have an [Twilio](https://www.twilio.com) account (API to send SMS in 
 
 ## Setup
 
-bundle install
+`bundle install`
 
-bin/rails db:setup
+`bin/rails db:setup`
 
 ### Start Redis server 
 
@@ -35,6 +35,6 @@ twilio:
 
 ## Testing
 
-bundle exec rspec spec
+`bundle exec rspec spec`
 
 
