@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :reminders, except: [:create, :new, :show, :destroy]
-  resources :short_messages
+  resources :short_messages, except: [:create, :new, :show, :destroy]
   resources :short_message_templates, except: [:create, :new, :show, :destroy]
 end

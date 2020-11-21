@@ -1,4 +1,4 @@
-= form_for :short_message, url: url, method: method, local: true do |form|
+= form_for :short_message, url: short_message_path(@short_message), method: :put, local: true do |form|
   %p 
     Phone Number
     = form.text_field :phone_number

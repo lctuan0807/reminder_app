@@ -12,20 +12,6 @@ class ShortMessagesController < ApplicationController
   def edit
   end
 
-  def new
-    @short_message_templates = ShortMessageTemplate.enabled
-  end
-
-  def create
-    if ShortMessage.new(short_message_params.merge!(user_id: current_user.id)).save
-      flash[:success] = 'Create SMS successfully'
-      redirect_to short_messages_path
-    else
-      flash[:error] = 'Create SMS failed'
-      render :new
-    end
-  end
-
   def update
     if @short_message.update(short_message_params)
       flash[:success] = 'Update SMS successfully'
@@ -33,15 +19,6 @@ class ShortMessagesController < ApplicationController
     else
       flash[:error] = 'Update SMS failed'
       render :edit
-    end
-  end
-
-  def destroy
-    if @short_message.destroy
-      flash[:success] = 'Delete SMS successfully'
-      redirect_to short_messages_path
-    else
-      flash[:error] = 'Delete SMS failed'
     end
   end
 
