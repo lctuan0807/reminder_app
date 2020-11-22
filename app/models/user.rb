@@ -35,7 +35,8 @@ class User < ApplicationRecord
   def schedule_sms_params
     {
       user_id: id,
-      reminder_id: reminder.id
+      reminder_id: reminder&.id,
+      expected_send_date: created_at + reminder.period_time
     }
   end
 

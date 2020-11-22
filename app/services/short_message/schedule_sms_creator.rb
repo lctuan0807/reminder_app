@@ -28,16 +28,11 @@ class ShortMessage::ScheduleSmsCreator
   def schedule_sms_params
     {
       phone_number: user.phone,
-      expected_send_date: expected_send_date,
+      expected_send_date: @params[:expected_send_date],
       kind: ShortMessage.kinds[:schedule],
       status: ShortMessage.statuses[:unsent],
       content: sms_content
     }
-  end
-
-  def expected_send_date
-    return @params[:expected_send_date] if @params[:expected_send_date].present?
-    user.created_at + reminder.due_after.days
   end
 
   def sms_content

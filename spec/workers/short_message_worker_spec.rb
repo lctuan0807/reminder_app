@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ShortMessageWorker do
   describe '#perform' do
+    Timecop.freeze(Time.zone.local(2020, 11, 20, 8, 0))
     let(:to_be_sent) { Time.zone.local(2020, 11, 15, 8, 0) }
     let(:do_not_send) { Time.zone.local(2020, 11, 30, 8, 3) }
     let(:mocked_sender) { double(ShortMessage::SmsSender) }

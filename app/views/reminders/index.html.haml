@@ -9,5 +9,5 @@
   - @reminders.each do |reminder|
     %tr
       %td= reminder.title
-      %td= reminder.due_after
+      %td= reminder.period_time_text
       %td= link_to 'Edit', edit_reminder_path(reminder) 

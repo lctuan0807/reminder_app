@@ -10,4 +10,4 @@ ShortMessageTemplate.create(name: 'Welcome SMS template', content: 'Welcome to o
 ShortMessageTemplate.create(name: 'SMS after 7 days registration', content: 'You have used our service for 7 days. Thanks!')
 
 Reminder.destroy_all
-Reminder.create(title: 'Notify SMS after 7 days registration', due_after: 7, sms_template_id: 2)
+Reminder.create(title: 'Notify SMS after 7 days registration', period: 7, period_type: 'day', sms_template_id: 2)

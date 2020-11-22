@@ -4,13 +4,14 @@ RSpec.describe ShortMessage::ScheduleSmsCreator do
   let(:subject) { described_class.new(params: params) }
   let!(:user) { create(:user, phone: '+84377134512', email: 'test@gmail.com', created_at: Time.zone.local(2020,11,23)) }
   let!(:sms_template) { create(:short_message_template, id: 2, content: 'Hello') }
-  let!(:reminder) { create(:reminder, sms_template_id: sms_template.id, due_after: 7) }
+  let!(:reminder) { create(:reminder, sms_template_id: sms_template.id, period: 7) }
 
   describe '#perform' do
     let(:params) do
       {
         reminder_id: reminder.to_param,
-        user_id: user.to_param
+        user_id: user.to_param,
+        expected_send_date: user.created_at + reminder.period_time
       }
     end
     let(:short_message) { ShortMessage.last }

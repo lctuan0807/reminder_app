@@ -30,7 +30,8 @@ RSpec.describe RemindersController, type: :controller do
         id: reminder_1.to_param,
         reminder: {
           title: 'reminder',
-          due_after: 7
+          period: 7,
+          period_type: 'hour'
         }
       }
     end
@@ -39,7 +40,7 @@ RSpec.describe RemindersController, type: :controller do
       specify do
         put :update, params: params
         expect(reminder_1.reload.title).to eq 'reminder'
-        expect(reminder_1.reload.due_after).to eq 7
+        expect(reminder_1.reload.period).to eq 7
         expect(response).to redirect_to reminders_path
         expect(flash[:success]).to eq 'Update reminder successfully'
       end

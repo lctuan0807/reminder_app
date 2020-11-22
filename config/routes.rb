@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     root 'devise/sessions#new', as: :unauthenticated_root
   end
 
-  resources :reminders, except: [:create, :new, :show, :destroy]
-  resources :short_messages, except: [:create, :new, :show, :destroy]
-  resources :short_message_templates, except: [:create, :new, :show, :destroy]
+  resources :reminders, except: [:create, :new, :destroy]
+  resources :short_messages, except: [:create, :new, :destroy]
+  resources :short_message_templates, except: [:create, :new, :destroy]
 end
